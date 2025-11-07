@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studiu de Caz — Utilizarea GIT / GitHub în muncă de echipă</title>
+  <meta name="description" content="Studiu de caz despre importanța utilizării aplicațiilor de lucru în echipă: GIT și GitHub pentru proiecte comune."/>
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#0b63d6; --muted:#6b7280;
+      --radius:12px; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:linear-gradient(180deg,#eef3ff 0%,var(--bg) 100%);
+      color:#111827; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px;
+    }
+    .container{max-width:1000px;margin:0 auto;}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+    .logo{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#00aaff);
+      display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(11,99,214,.18)
+    }
+    h1{margin:0;font-size:1.6rem}
+    p.lead{color:var(--muted);margin:6px 0 18px}
+    .grid{display:grid;grid-template-columns:1fr 340px;gap:20px}
+    @media (max-width:880px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:0 6px 18px rgba(15,23,42,.06)}
+    .section{margin-bottom:16px}
+    h2{margin:0 0 10px;font-size:1.1rem}
+    ul{padding-left:18px;margin:8px 0 12px;color:var(--muted)}
+    code{background:#f3f4f6;padding:2px 6px;border-radius:6px;font-family:monospace;font-size:.95em}
+    pre{background:#0f1724;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto;font-family:monospace;font-size:.9em}
+    .muted{color:var(--muted);font-size:.95em}
+    .btn{
+      display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;box-shadow:0 6px 16px rgba(11,99,214,.18)
+    }
+    footer{margin-top:22px;color:var(--muted);font-size:.9em;text-align:center}
+    .info-list{list-style:none;padding:0;margin:0}
+    .info-list li{padding:8px 0;border-bottom:1px dashed #eef2ff;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">GIT</div>
+      <div>
+        <h1>Studiu de Caz: Importanța utilizării GIT / GitHub în lucru de echipă</h1>
+        <p class="lead">Cum organizezi colaborarea pe un proiect comun, folosind bune practici, comenzi Git și hostare pe GitHub Pages.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main class="card">
+        <section class="section">
+          <h2>Introducere</h2>
+          <p class="muted">GIT este un sistem de control al versiunilor distribuit, iar GitHub este o platformă web care găzduiește repository-uri Git și oferă facilități pentru colaborare (pull requests, issues, actions). Folosirea acestora în echipă reduce conflictele, îmbunătățește trasabilitatea modificărilor și crește productivitatea.</p>
+        </section>
+
+        <section class="section">
+          <h2>Beneficii principale</h2>
+          <ul>
+            <li>Istoric clar al codului — fiecare modificare are autor și mesaj</li>
+            <li>Ramuri (branches) pentru funcționalități noi sau bugfix-uri</li>
+            <li>Code review prin Pull Requests</li>
+            <li>Integrare continuă / Deploy automat cu GitHub Actions</li>
+            <li>Rezolvarea conflictelor și revenire la versiuni anterioare</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Flux recomandat de lucru (exemplu)</h2>
+          <ol class="muted">
+            <li>Clonare repo: <code>git clone</code></li>
+            <li>Creare branch pentru o sarcină: <code>git checkout -b feat/noua-functie</code></li>
+            <li>Commit frecvent cu mesaje clare: <code>git add . &amp;&amp; git commit -m "descriere scurtă"</code></li>
+            <li>Push pe remote: <code>git push origin feat/noua-functie</code></li>
+            <li>Deschidere Pull Request pe GitHub, review, merge după aprobare</li>
+          </ol>
+        </section>
+
+        <section class="section">
+          <h2>Exemplu de reguli bune (convenții)</h2>
+          <ul>
+            <li>Branch-uri: <code>main</code> (sau <code>master</code>) - stabil, <code>develop</code> - integrare, <code>feat/*</code>, <code>fix/*</code></li>
+            <li>Mesaje commit: prefix scurt (<code>feat:</code>, <code>fix:</code>, <code>docs:</code>), urmat de descriere</li>
+            <li>Pull Request-uri mici, cu descriere și link la issue</li>
+            <li>Folosirea .gitignore pentru fișiere locale (node_modules, .env, etc.)</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2>Titlu: Pași practici pentru cerințele tale</h2>
+          <p class="muted">Mai jos sunt comenzile minimal necesare pentru a crea repo local, a încărca pe GitHub și a hosta pagina cu GitHub Pages.</p>
+
+          <h3>Comenzi Git (Git Bash)</h3>
+          <pre>
+# 1. Initializează repo local
+git init
+
+# 2. Adaugă fișiere și commit inițial
+git add index.html
+git commit -m "Initial commit: adaug index.html pentru studiul de caz"
+
+# 3. Creează branch principal (opțional)
+git branch -M main
+
+# 4. Adaugă remote (înlocuiește <username> și repo-url)
+git remote add origin https://github.com/&lt;username&gt;/studiu-de-caz.git
+
+# 5. Push pe GitHub
+git push -u origin main
+          </pre>
+
+          <h3>Hostare pe GitHub Pages</h3>
+          <ul>
+            <li>Creează repository public pe GitHub cu numele <code>studiu-de-caz</code>.</li>
+            <li>După push, mergi la Settings → Pages → Branch: selectează <code>main</code> și root (/) → Save.</li>
+            <li>Link-ul final va fi: <code>https://&lt;username&gt;.github.io/studiu-de-caz/</code> (înlocuiește <code>&lt;username&gt;</code> cu username-ul tău GitHub).</li>
+          </ul>
+        </section>
+
+      </main>
+
+      <aside class="card">
+        <h2>Rezumat rapid</h2>
+        <ul class="info-list">
+          <li><strong>Nume repo:</strong> studiu-de-caz</li>
+          <li><strong>Fișier principal:</strong> index.html</li>
+          <li><strong>Hostare:</strong> GitHub Pages</li>
+          <li><strong>Link rezultat:</strong> https://&lt;username&gt;.github.io/studiu-de-caz/</li>
+        </ul>
+
+        <h2 style="margin-top:14px">Sfat util</h2>
+        <p class="muted">Fă commit-uri mici și descriptive. Folosește Pull Requests pentru review — asta protejează codul și învață echipa.</p>
+
+        <a class="btn" href="https://docs.github.com/en/pages" target="_blank" rel="noopener">Documentație GitHub Pages</a>
+      </aside>
+    </div>
+
+    <footer>
+      <p>Pagina generată pentru <strong>Studiu de Caz</strong> — folosește fișierul ca punct de plecare și personalizează conținutul cercetat.</p>
+    </footer>
+  </div>
+</body>
+</html>
